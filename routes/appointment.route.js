@@ -4,6 +4,9 @@ import {getAllAppointments, makeAppointment} from "../controllers/appointment.co
 const router = express.Router()
 
 router.get("/", getAllAppointments)
+
 router.post("/", makeAppointment)
+
+router.put("/:appointmentId", makeAppointment)
 
 export default router
