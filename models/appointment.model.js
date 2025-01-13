@@ -1,24 +1,25 @@
 import mongoose from "mongoose";
 
-// Medical appointments DB shema
+// Medical appointments DB schema
 const appointmentSchema = new mongoose.Schema({
-    patient: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+    patientDNI: {
+        type: String,
         required: true
     },
-    doctor: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+    doctorDNI: {
+        type: String,
         required: true
     },
     date: {
         type: Date,
-        default: Date.now,
         required: true
     },
     description: String,
-    status: String
+    status: {
+        type: String,
+        enum: ['pending', 'completed', 'confirmed'],
+        default: "pending",
+    }
 }, {
     timestamps: true
 })
