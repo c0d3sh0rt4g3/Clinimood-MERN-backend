@@ -3,6 +3,6 @@ import {getAllAppointments} from "../controllers/appointment.controller.js";
 
 const router = express.Router()
 
-router.get("/appointments", getAllAppointments)
+router.get("/", getAllAppointments)
 
 export default router
