@@ -4,7 +4,7 @@ import {
     deleteUser,
     getAllUsers,
     getUserByDni,
-    getUsersByRole,
+    getUsersByRole, loginUser,
     updateUserByDni
 } from "../controllers/user.controller.js";
 
@@ -22,5 +22,7 @@ router.post("/", createUser)
 router.put("/:dni", updateUserByDni)
 
 router.delete("/:dni", deleteUser)
+
+router.post("/login", loginUser)
 
 export default router

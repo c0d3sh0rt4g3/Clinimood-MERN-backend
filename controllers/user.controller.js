@@ -1,5 +1,5 @@
-import User from "../models/user.model.js";
-import bcrypt from "bcryptjs";
+import User from "../models/user.model.js"
+import bcrypt from "bcryptjs"
 
 // Gets all DB users
 export const getAllUsers = async (req, res) => {
@@ -92,15 +92,45 @@ export const updateUserByDni = async (req, res) => {
 
 // Deletes the specified user
 export const deleteUser = async (req, res) => {
-    const { dni } = req.params;
+    const { dni } = req.params
     try {
-        const deletedUser = await User.findOneAndDelete({ DNI: dni });
+        const deletedUser = await User.findOneAndDelete({ DNI: dni })
         if (!deletedUser) {
-            return res.status(404).json({ success: false, message: "User not found" });
+            return res.status(404).json({ success: false, message: "User not found" })
         }
-        res.status(200).json({ success: true, message: 'User deleted successfully' });
+        res.status(200).json({ success: true, message: 'User deleted successfully' })
     } catch (error) {
-        console.error(`Error in deleting user: ${error.message}`);
-        res.status(500).json({ success: false, error: error.message });
+        console.error(`Error in deleting user: ${error.message}`)
+        res.status(500).json({ success: false, error: error.message })
     }
-};
+}
+
+// Verify if the data introduced y correct to log in
+export const loginUser = async (req, res) => {
+    const { email, password } = req.body
+
+    // Check if email and password are provided
+    if (!email || !password) {
+        return res.status(400).json({ success: false, error: "Email and password are required" })
+    }
+
+    try {
+        const user = await User.findOne({ email })
+
+        if (!user) {
+            return res.status(404).json({ success: false, error: "User not found" })
+        }
+
+        // We compare the provided password with the hashed password stored in the database
+        const isPasswordValid = await bcrypt.compare(password, user.password)
+
+        // If the password is incorrect, it returns an error
+        if (!isPasswordValid) {
+            return res.status(400).json({ success: false, error: "Invalid password" })
+        }
+        res.status(200).json({success: true, message: "Login successful", data: user})
+    } catch (error) {
+        console.error(`Error in login: ${error.message}`)
+        res.status(500).json({ success: false, error: error.message })
+    }
+}
