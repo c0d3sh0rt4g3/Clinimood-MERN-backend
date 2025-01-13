@@ -24,6 +24,23 @@ export const getUserByDni = async (req, res) => {
     }
 }
 
+export const getUsersByRole = async (req, res) => {
+    const { role } = req.params
+
+    if (!role) return res.status(400).json({success: false, error: `Role parameter is required`})
+
+    try {
+        const user = await User.find({role})
+        if (!user) {
+            return res.status(404).json({success: false, error: `Users with role ${role} not found`})
+        }
+        res.status(200).json({success: true, data: user})
+    } catch (error){
+        console.error(`Error in fetching user: ${error.message}`)
+        res.status(500).json({success: false, error: error.message})
+    }
+}
+
 export const createUser = async (req, res) => {
     const user = req.body
     if (!user.DNI || !user.name || !user.email || !user.password || !user.role) {
@@ -43,10 +60,6 @@ export const createUser = async (req, res) => {
 export const updateUserByDni = async (req, res) => {
     const { dni } = req.params
     const updates = req.body
-
-    if (!updates.DNI || !updates.name || !updates.email || !updates.password || !updates.role) {
-        res.status(400).json({success: false, error: "DNI, name, email, password and role are required fields"})
-    }
 
     try {
         const updatedUser = await  User.findOneAndUpdate({DNI : dni}, updates, {new : true})
