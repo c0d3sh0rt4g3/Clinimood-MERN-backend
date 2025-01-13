@@ -1,5 +1,7 @@
 import User from "../models/user.model.js";
+import bcrypt from "bcryptjs";
 
+// Gets all DB users
 export const getAllUsers = async (req, res) => {
     try {
         const users = await User.find({})
@@ -10,6 +12,7 @@ export const getAllUsers = async (req, res) => {
     }
 }
 
+// Get the user that has the specified DNI
 export const getUserByDni = async (req, res) => {
     const { dni } = req.params
     try {
@@ -24,6 +27,7 @@ export const getUserByDni = async (req, res) => {
     }
 }
 
+// Gets all users with a certain role
 export const getUsersByRole = async (req, res) => {
     const { role } = req.params
 
@@ -41,13 +45,23 @@ export const getUsersByRole = async (req, res) => {
     }
 }
 
+// Creates a user with the given data, encrypting its password first
 export const createUser = async (req, res) => {
     const user = req.body
     if (!user.DNI || !user.name || !user.email || !user.password || !user.role) {
         res.status(400).json({success: false, error: "DNI, name, email, password and role are required fields"})
     }
 
-    const newUser = new User(user)
+    // We generate a salt thanks to bcrypt library
+    const salt = await bcrypt.genSalt(10)
+    // We hash the password along with the salt
+    const hashedPassword = await bcrypt.hash(user.password, salt)
+
+    const newUser = new User({
+        ...user,
+        password: hashedPassword
+    })
+
     try {
         await newUser.save()
         res.status(201).json({success: true, data: newUser})
@@ -57,6 +71,7 @@ export const createUser = async (req, res) => {
     }
 }
 
+//Updates users with the specified DNI
 export const updateUserByDni = async (req, res) => {
     const { dni } = req.params
     const updates = req.body
@@ -75,6 +90,7 @@ export const updateUserByDni = async (req, res) => {
     }
 }
 
+// Deletes the specified user
 export const deleteUser = async (req, res) => {
     const { dni } = req.params;
     try {

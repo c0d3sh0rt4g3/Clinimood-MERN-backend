@@ -10,6 +10,7 @@ import {
 
 const router = express.Router();
 
+// Routes to each endpoint
 router.get("/", getAllUsers)
 
 router.get("/:dni", getUserByDni)

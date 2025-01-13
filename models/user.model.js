@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// User DB schema
 const userSchema = new mongoose.Schema({
     DNI: {
         type: String,
