@@ -6,13 +6,13 @@ const historySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    appointmentId: [{
+    appointmentIdArray: [{ // Renamed field for clarity
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Appointment'
     }]
 }, {
     timestamps: true
-})
+});
 
 const History = mongoose.model('History', historySchema);
 
