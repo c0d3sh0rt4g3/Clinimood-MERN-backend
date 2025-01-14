@@ -1,5 +1,6 @@
 import User from "../models/user.model.js"
 import Appointment from "../models/appointment.model.js"
+import res from "express/lib/response.js";
 
 // Get all appointments
 export const getAllAppointments = async (req, res) => {
@@ -88,5 +89,21 @@ export const editAppointment = async (req, res) => {
     } catch (error) {
         console.error(`Error in updating appointment: ${error.message}`)
         res.status(500).json({ message: 'Error updating the appointment', error: error.message })
+    }
+}
+
+// Deletes an appointment
+export const deleteAppointment = async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const deletedAppointment = await Appointment.findByIdAndDelete(id)
+        if (!deletedAppointment) {
+            return res.status(404).json({success: false, message: `Appointment with ID: ${id} not found` })
+        }
+        res.status(200).json({success:true, message: `Appointment with id ${id} deleted succesfully`})
+    } catch (error) {
+        console.error(`Error in deleting appointment: ${error.message}`)
+        res.status(500).json({ success: false, error: error.message })
     }
 }
