@@ -1,5 +1,5 @@
 import User from "../models/user.model.js"
-import Appointment from "../models/appointment.model.js";
+import Appointment from "../models/appointment.model.js"
 
 // Get all appointments
 export const getAllAppointments = async (req, res) => {
@@ -14,19 +14,19 @@ export const getAllAppointments = async (req, res) => {
 
 // Make an apointment
 export const makeAppointment = async (req, res) => {
-    const { patientDNI, doctorDNI, date, description, status } = req.body;
+    const { patientDNI, doctorDNI, date, description, status } = req.body
 
     try {
         // Verify that there's a patient with that DNI
-        const patient = await User.findOne({ DNI: patientDNI });
+        const patient = await User.findOne({ DNI: patientDNI })
         if (!patient || patient.role !== 'patient') {
-            return res.status(400).json({ message: `Patient not found with DNI: ${patientDNI}` });
+            return res.status(400).json({ message: `Patient not found with DNI: ${patientDNI}` })
         }
 
         // Verify that there's a doctor with that DNI
-        const doctor = await User.findOne({ DNI: doctorDNI });
+        const doctor = await User.findOne({ DNI: doctorDNI })
         if (!doctor || doctor.role !== 'doctor') {
-          return res.status(400).json({ message: `Doctor not found with DNI: ${doctorDNI}` });
+          return res.status(400).json({ message: `Doctor not found with DNI: ${doctorDNI}` })
         }
 
         // Create the medical appointment
@@ -36,57 +36,57 @@ export const makeAppointment = async (req, res) => {
           date: date,
           description,
           status: 'pending'
-        });
+        })
 
         // We save the appointment in the DB
-        await newAppointment.save();
+        await newAppointment.save()
 
-        res.status(201).json({ message: 'Medical appointment made succesfully', appointment: newAppointment });
+        res.status(201).json({ message: 'Medical appointment made succesfully', appointment: newAppointment })
     } catch (error) {
         console.error(`Error in creating appointment: ${error.message}`)
-        res.status(500).json({ message: 'Error creating an appointment', error: error.message});
+        res.status(500).json({ message: 'Error creating an appointment', error: error.message})
     }
 }
 
 // Edit an existing appointment
 export const editAppointment = async (req, res) => {
-    const { id } = req.params; // Appointment ID from the URL
-    const updates = req.body; // Updates from the request body
-    const { patientDNI, doctorDNI } = updates;
+    const { id } = req.params
+    const updates = req.body
+    const { patientDNI, doctorDNI } = updates
 
     try {
         // Find the appointment by ID
-        const appointment = await Appointment.findById(id);
+        const appointment = await Appointment.findById(id)
         if (!appointment) {
-            return res.status(404).json({ message: `Appointment not found with ID: ${id}` });
+            return res.status(404).json({ message: `Appointment not found with ID: ${id}` })
         }
 
         // Verify that the patient with the given DNI exists and has the 'patient' role
         if (patientDNI) {
-            const patient = await User.findOne({ DNI: patientDNI });
+            const patient = await User.findOne({ DNI: patientDNI })
             if (!patient || patient.role !== 'patient') {
-                return res.status(400).json({ message: `Patient not found with DNI: ${patientDNI}` });
+                return res.status(400).json({ message: `Patient not found with DNI: ${patientDNI}` })
             }
         }
 
         // Verify that the doctor with the given DNI exists and has the 'doctor' role
         if (doctorDNI) {
-            const doctor = await User.findOne({ DNI: doctorDNI });
+            const doctor = await User.findOne({ DNI: doctorDNI })
             if (!doctor || doctor.role !== 'doctor') {
-                return res.status(400).json({ message: `Doctor not found with DNI: ${doctorDNI}` });
+                return res.status(400).json({ message: `Doctor not found with DNI: ${doctorDNI}` })
             }
         }
 
         // Update the appointment
-        const updatedAppointment = await Appointment.findByIdAndUpdate(id, updates, { new: true });
+        const updatedAppointment = await Appointment.findByIdAndUpdate(id, updates, { new: true })
 
         if (!updatedAppointment) {
-            return res.status(404).json({ message: `Appointment with ID: ${id} not found` });
+            return res.status(404).json({ message: `Appointment with ID: ${id} not found` })
         }
 
-        res.status(200).json({ message: 'Appointment updated successfully', appointment: updatedAppointment });
+        res.status(200).json({ message: 'Appointment updated successfully', appointment: updatedAppointment })
     } catch (error) {
-        console.error(`Error in updating appointment: ${error.message}`);
-        res.status(500).json({ message: 'Error updating the appointment', error: error.message });
+        console.error(`Error in updating appointment: ${error.message}`)
+        res.status(500).json({ message: 'Error updating the appointment', error: error.message })
     }
-};
+}
