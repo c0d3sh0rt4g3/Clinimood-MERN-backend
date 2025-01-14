@@ -4,7 +4,7 @@ import Appointment from "../models/appointment.model.js";
 // Get all appointments
 export const getAllAppointments = async (req, res) => {
     try{
-        const appointments = await Appointments.find({})
+        const appointments = await Appointment.find({})
         res.status(200).json({success: true, data: appointments})
     } catch(error){
         console.error(`Error in fetching appointments: ${error.message}`)
@@ -50,44 +50,43 @@ export const makeAppointment = async (req, res) => {
 
 // Edit an existing appointment
 export const editAppointment = async (req, res) => {
-    const { appointmentId } = req.params;  // The appointment ID is passed in the URL
-    const { patientDNI, doctorDNI, date, description, status } = req.body;
+    const { id } = req.params; // Appointment ID from the URL
+    const updates = req.body; // Updates from the request body
+    const { patientDNI, doctorDNI } = updates;
 
     try {
         // Find the appointment by ID
-        const appointment = await Appointment.findById(appointmentId);
+        const appointment = await Appointment.findById(id);
         if (!appointment) {
-            return res.status(404).json({ message: `Appointment not found with ID: ${appointmentId}` });
+            return res.status(404).json({ message: `Appointment not found with ID: ${id}` });
         }
 
         // Verify that the patient with the given DNI exists and has the 'patient' role
-        const patient = await User.findOne({ DNI: patientDNI });
-        if (!patient || patient.role !== 'patient') {
-            return res.status(400).json({ message: `Patient not found with DNI: ${patientDNI}` });
+        if (patientDNI) {
+            const patient = await User.findOne({ DNI: patientDNI });
+            if (!patient || patient.role !== 'patient') {
+                return res.status(400).json({ message: `Patient not found with DNI: ${patientDNI}` });
+            }
         }
 
         // Verify that the doctor with the given DNI exists and has the 'doctor' role
-        const doctor = await User.findOne({ DNI: doctorDNI });
-        if (!doctor || doctor.role !== 'doctor') {
-            return res.status(400).json({ message: `Doctor not found with DNI: ${doctorDNI}` });
-        }
-
-        try {
-            const updatedUser = await  Appointment.findOneAndUpdate({id : id}, updates, {new : true})
-
-            if (!updatedUser) {
-                return res.status(404).json({success: false, error: `Appointment with id ${id} not found`})
+        if (doctorDNI) {
+            const doctor = await User.findOne({ DNI: doctorDNI });
+            if (!doctor || doctor.role !== 'doctor') {
+                return res.status(400).json({ message: `Doctor not found with DNI: ${doctorDNI}` });
             }
-
-            res.status(200).json({success: true, data: updatedUser})
-        } catch (error){
-            console.error(`Error in updating user: ${error.message}`)
-            res.status(500).json({success: false, error: error.message})
         }
 
-        res.status(200).json({ message: 'Appointment updated successfully', appointment });
+        // Update the appointment
+        const updatedAppointment = await Appointment.findByIdAndUpdate(id, updates, { new: true });
+
+        if (!updatedAppointment) {
+            return res.status(404).json({ message: `Appointment with ID: ${id} not found` });
+        }
+
+        res.status(200).json({ message: 'Appointment updated successfully', appointment: updatedAppointment });
     } catch (error) {
         console.error(`Error in updating appointment: ${error.message}`);
         res.status(500).json({ message: 'Error updating the appointment', error: error.message });
     }
-}
+};

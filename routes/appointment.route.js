@@ -1,5 +1,5 @@
 import express from "express";
-import {getAllAppointments, makeAppointment} from "../controllers/appointment.controller.js";
+import {editAppointment, getAllAppointments, makeAppointment} from "../controllers/appointment.controller.js";
 
 const router = express.Router()
 
@@ -7,6 +7,6 @@ router.get("/", getAllAppointments)
 
 router.post("/", makeAppointment)
 
-router.put("/:appointmentId", makeAppointment)
+router.put("/:id", editAppointment)
 
 export default router
