@@ -3,12 +3,15 @@ import {
     deleteAppointment,
     editAppointment,
     getAllAppointments,
+    getAppointmentsByDNI,
     makeAppointment
 } from "../controllers/appointment.controller.js";
 
 const router = express.Router()
 
 router.get("/", getAllAppointments)
+
+router.get("/:dni", getAppointmentsByDNI)
 
 router.post("/", makeAppointment)
 
