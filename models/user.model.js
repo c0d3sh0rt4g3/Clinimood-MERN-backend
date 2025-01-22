@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema({
     phone: String,
     address: String,
     specialization: String,
+    profilePicture: String
 }, {
     timestamps: true
 });
