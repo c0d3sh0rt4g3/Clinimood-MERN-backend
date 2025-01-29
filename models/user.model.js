@@ -28,7 +28,13 @@ const userSchema = new mongoose.Schema({
     phone: String,
     address: String,
     specialization: String,
-    profilePicture: String
+    profilePicture: String,
+
+    // Stores the hashed reset token
+    resetPasswordToken: String,
+    // Stores the expiration time of the token
+    resetPasswordExpires: Date
+
 }, {
     timestamps: true
 });
