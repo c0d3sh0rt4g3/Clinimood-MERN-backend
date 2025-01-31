@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>routes/appointment.route.js - Documentation</title>
+    <title>models/user.model.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -35,7 +35,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">routes/appointment.route.js</h1>
+    <h1 class="page-title">models/user.model.js</h1>
     
 
     
@@ -45,96 +45,66 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import express from "express";
-import {
-    deleteAppointment,
-    editAppointment,
-    getAllAppointments,
-    getAppointmentsByDNI,
-    makeAppointment
-} from "../controllers/appointment.controller.js";
+            <pre class="prettyprint source linenums"><code>import mongoose from "mongoose";
 
 /**
- * Express router for handling appointment-related routes.
- * @module AppointmentRouter
- * @type {express.Router}
+ * User DB schema.
+ * @typedef {Object} UserSchema
+ * @property {string} DNI - DNI of the user (required, unique).
+ * @property {string} name - Name of the user (required).
+ * @property {string} email - Email of the user (required, unique).
+ * @property {string} password - Password of the user (required).
+ * @property {string} role - Role of the user. Must be one of: 'patient', 'doctor', 'admin' (required).
+ * @property {string} [phone] - Phone number of the user (optional).
+ * @property {string} [address] - Address of the user (optional).
+ * @property {string} [specialization] - Specialization of the user (optional, typically for doctors).
+ * @property {string} [profilePicture] - URL or path to the user's profile picture (optional).
+ * @property {string} [resetPasswordToken] - Hashed token for password reset (optional).
+ * @property {Date} [resetPasswordExpires] - Expiration time for the password reset token (optional).
+ * @property {Date} createdAt - Timestamp of when the user was created (automatically added).
+ * @property {Date} updatedAt - Timestamp of when the user was last updated (automatically added).
  */
-const router = express.Router();
+const userSchema = new mongoose.Schema({
+    DNI: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    role: {
+        type: String,
+        enum: ['patient', 'doctor', 'admin'],
+        required: true
+    },
+    phone: String,
+    address: String,
+    specialization: String,
+    profilePicture: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
+}, {
+    timestamps: true
+});
 
 /**
- * Route to fetch all appointments.
- * @name GET /appointments
- * @function
- * @async
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- * @see {@link module:controllers/appointment.controller.getAllAppointments}
+ * Mongoose model for the User schema.
+ * @type {mongoose.Model&lt;UserSchema>}
  */
-router.get("/", getAllAppointments);
+const User = mongoose.model('User', userSchema);
 
-/**
- * Route to fetch appointments by DNI (either patientDNI or doctorDNI).
- * @name GET /appointments/:dni
- * @function
- * @memberof module:AppointmentRouter
- * @async
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- * @param {string} req.params.dni - The DNI to search for.
- * @see {@link module:controllers/appointment.controller.getAppointmentsByDNI}
- */
-router.get("/:dni", getAppointmentsByDNI);
-
-/**
- * Route to create a new medical appointment.
- * @name POST /appointments
- * @function
- * @memberof module:AppointmentRouter
- * @async
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- * @param {string} req.body.patientDNI - DNI of the patient.
- * @param {string} req.body.doctorDNI - DNI of the doctor.
- * @param {Date} req.body.date - Date and time of the appointment.
- * @param {string} [req.body.description] - Optional description of the appointment.
- * @param {string} [req.body.status] - Status of the appointment (default: 'pending').
- * @see {@link module:controllers/appointment.controller.makeAppointment}
- */
-router.post("/", makeAppointment);
-
-/**
- * Route to update an existing appointment by ID.
- * @name PUT /appointments/:id
- * @function
- * @memberof module:AppointmentRouter
- * @async
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- * @param {string} req.params.id - The ID of the appointment to update.
- * @param {Object} req.body - The updates to apply to the appointment.
- * @param {string} [req.body.patientDNI] - New DNI of the patient.
- * @param {string} [req.body.doctorDNI] - New DNI of the doctor.
- * @param {Date} [req.body.date] - New date and time of the appointment.
- * @param {string} [req.body.description] - New description of the appointment.
- * @param {string} [req.body.status] - New status of the appointment.
- * @see {@link module:controllers/appointment.controller.editAppointment}
- */
-router.put("/:id", editAppointment);
-
-/**
- * Route to delete an appointment by ID.
- * @name DELETE /appointments/:id
- * @function
- * @memberof module:AppointmentRouter
- * @async
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- * @param {string} req.params.id - The ID of the appointment to delete.
- * @see {@link module:controllers/appointment.controller.deleteAppointment}
- */
-router.delete("/:id", deleteAppointment);
-
-export default router;</code></pre>
+export default User;</code></pre>
         </article>
     </section>
 

@@ -2,9 +2,15 @@ import User from "../models/user.model.js";
 import Appointment from "../models/appointment.model.js";
 
 /**
+ * Controller for handling appointment-related operations.
+ * @module AppointmentController
+*/
+
+/**
  * Fetches all appointments from the database.
  * @async
  * @function getAllAppointments
+ * @memberof module:AppointmentController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @returns {Promise<void>} - Returns a JSON response with the list of appointments or an error message.
@@ -23,6 +29,7 @@ export const getAllAppointments = async (req, res) => {
  * Fetches appointments by DNI (either patientDNI or doctorDNI).
  * @async
  * @function getAppointmentsByDNI
+ * @memberof module:AppointmentController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.params.dni - The DNI to search for.
@@ -59,6 +66,7 @@ export const getAppointmentsByDNI = async (req, res) => {
  * Creates a new medical appointment.
  * @async
  * @function makeAppointment
+ * @memberof module:AppointmentController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.body.patientDNI - DNI of the patient.
@@ -107,6 +115,7 @@ export const makeAppointment = async (req, res) => {
  * Updates an existing appointment.
  * @async
  * @function editAppointment
+ * @memberof module:AppointmentController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.params.id - The ID of the appointment to update.
@@ -164,6 +173,7 @@ export const editAppointment = async (req, res) => {
  * Deletes an appointment by ID.
  * @async
  * @function deleteAppointment
+ * @memberof module:AppointmentController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.params.id - The ID of the appointment to delete.

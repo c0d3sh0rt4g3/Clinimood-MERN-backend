@@ -9,6 +9,7 @@ import {
 
 /**
  * Express router for handling appointment-related routes.
+ * @module AppointmentRouter
  * @type {express.Router}
  */
 const router = express.Router();
@@ -28,6 +29,7 @@ router.get("/", getAllAppointments);
  * Route to fetch appointments by DNI (either patientDNI or doctorDNI).
  * @name GET /appointments/:dni
  * @function
+ * @memberof module:AppointmentRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -40,6 +42,7 @@ router.get("/:dni", getAppointmentsByDNI);
  * Route to create a new medical appointment.
  * @name POST /appointments
  * @function
+ * @memberof module:AppointmentRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -56,6 +59,7 @@ router.post("/", makeAppointment);
  * Route to update an existing appointment by ID.
  * @name PUT /appointments/:id
  * @function
+ * @memberof module:AppointmentRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -74,6 +78,7 @@ router.put("/:id", editAppointment);
  * Route to delete an appointment by ID.
  * @name DELETE /appointments/:id
  * @function
+ * @memberof module:AppointmentRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.

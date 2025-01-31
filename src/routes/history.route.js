@@ -3,6 +3,7 @@ import { createMedicalHistory, deleteHistory, getAllHistories } from "../control
 
 /**
  * Express router for handling medical history-related routes.
+ * @module HistoryRouter
  * @type {express.Router}
  */
 const router = express.Router();
@@ -11,6 +12,7 @@ const router = express.Router();
  * Route to fetch all medical histories.
  * @name GET /history
  * @function
+ * @memberof module:HistoryRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -22,6 +24,7 @@ router.get("/", getAllHistories);
  * Route to create a new medical history.
  * @name POST /history
  * @function
+ * @memberof module:HistoryRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -34,6 +37,7 @@ router.post("/", createMedicalHistory);
  * Route to delete a medical history by patient DNI.
  * @name DELETE /history/:patientDNI
  * @function
+ * @memberof module:HistoryRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.

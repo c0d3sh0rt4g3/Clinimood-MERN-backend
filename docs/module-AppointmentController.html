@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Global - Documentation</title>
+    <title>AppointmentController - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -35,7 +35,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">AppointmentController</h1>
     
 
     
@@ -47,11 +47,8 @@
 
 <header>
     
-        <h2>
         
             
-        
-        </h2>
         
     
 </header>
@@ -61,10 +58,26 @@
         <div class="container-overview">
         
             
+                <div class="description usertext">Controller for handling appointment-related operations.</div>
+            
+
+            
+                
+
+
+
 
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Controller for handling appointment-related operations.</li></ul></dd>
+    
 
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_appointment.controller.js.html">controllers/appointment.controller.js</a>, <a href="controllers_appointment.controller.js.html#line4">line 4</a>
+    </li></ul></dd>
     
 
     
@@ -101,7 +114,31 @@
 
 
 
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             
         
@@ -121,12 +158,18 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
-<h4 class="name" id="Appointment"><span class="type-signature type-signature-constant">(constant) </span>Appointment<span class="type-signature"> :mongoose.Model.&lt;<a href="global.html#AppointmentSchema">AppointmentSchema</a>></span></h4>
 
+    
+
+    <h4 class="name" id=".deleteAppointment"><span class="type-signature type-signature-async, static">(async, static) </span>deleteAppointment<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+
+    
 
 
 
@@ -134,13 +177,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Mongoose model for the Appointment schema.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Deletes an appointment by ID.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_appointment.model.js.html">models/appointment.model.js</a>, <a href="models_appointment.model.js.html#line41">line 41</a>
+        <a href="controllers_appointment.controller.js.html">controllers/appointment.controller.js</a>, <a href="controllers_appointment.controller.js.html#line172">line 172</a>
     </li></ul></dd>
     
 
@@ -179,196 +222,160 @@
 
 
 
-<div class="description usertext">
-    Mongoose model for the Appointment schema.
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">mongoose.Model.&lt;<a href="global.html#AppointmentSchema">AppointmentSchema</a>></span>
-
-
-
-        </li>
-    </ul>
 
 
 
 
 
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
 
         
-            
-<h4 class="name" id="History"><span class="type-signature type-signature-constant">(constant) </span>History<span class="type-signature"> :mongoose.Model.&lt;<a href="global.html#HistorySchema">HistorySchema</a>></span></h4>
-
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Mongoose model for the History schema.</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_history.model.js.html">models/history.model.js</a>, <a href="models_history.model.js.html#line28">line 28</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Mongoose model for the History schema.
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">mongoose.Model.&lt;<a href="global.html#HistorySchema">HistorySchema</a>></span>
-
-
-
-        </li>
-    </ul>
-
-
-
-
-
 
         
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<h4 class="name" id="User"><span class="type-signature type-signature-constant">(constant) </span>User<span class="type-signature"> :mongoose.Model.&lt;<a href="global.html#UserSchema">UserSchema</a>></span></h4>
-
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Mongoose model for the User schema.</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user.model.js.html">models/user.model.js</a>, <a href="models_user.model.js.html#line58">line 58</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Mongoose model for the User schema.
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+                <td class="name"><code>req</code></td>
             
-<span class="param-type">mongoose.Model.&lt;<a href="global.html#UserSchema">UserSchema</a>></span>
 
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-
-        
+            <td class="type">
+            
                 
-<h4 class="name" id="AppointmentSchema">AppointmentSchema</h4>
+<span class="param-type">Object</span>
 
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express request object.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express response object.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>req.params.id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the appointment to delete.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    - Returns a JSON response indicating success or failure.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".editAppointment"><span class="type-signature type-signature-async, static">(async, static) </span>editAppointment<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+
+    
 
 
 
@@ -376,13 +383,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Medical appointments DB schema.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Updates an existing appointment.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_appointment.model.js.html">models/appointment.model.js</a>, <a href="models_appointment.model.js.html#line3">line 3</a>
+        <a href="controllers_appointment.controller.js.html">controllers/appointment.controller.js</a>, <a href="controllers_appointment.controller.js.html#line114">line 114</a>
     </li></ul></dd>
     
 
@@ -419,11 +426,135 @@
 
 
 
-    <h5 class="subsection-title">Properties:</h5>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express request object.</td>
+        </tr>
 
     
 
-<table class="props">
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express response object.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>req.params.id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the appointment to update.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>req.body</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The updates to apply to the appointment.
+                <h6>Properties</h6>
+                
+
+<table class="params">
     <thead>
     <tr>
         
@@ -463,6 +594,10 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
+
+                
 
                 
                 </td>
@@ -470,7 +605,7 @@
 
             
 
-            <td class="description last">DNI of the patient (required).</td>
+            <td class="description last">New DNI of the patient.</td>
         </tr>
 
     
@@ -493,6 +628,10 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
+
+                
 
                 
                 </td>
@@ -500,7 +639,7 @@
 
             
 
-            <td class="description last">DNI of the doctor (required).</td>
+            <td class="description last">New DNI of the doctor.</td>
         </tr>
 
     
@@ -523,6 +662,10 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
+
+                
 
                 
                 </td>
@@ -530,7 +673,7 @@
 
             
 
-            <td class="description last">Date and time of the appointment (required).</td>
+            <td class="description last">New date and time of the appointment.</td>
         </tr>
 
     
@@ -557,12 +700,14 @@
                 
 
                 
+
+                
                 </td>
             
 
             
 
-            <td class="description last">Optional description of the appointment.</td>
+            <td class="description last">New description of the appointment.</td>
         </tr>
 
     
@@ -585,6 +730,10 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
+
+                
 
                 
                 </td>
@@ -592,67 +741,14 @@
 
             
 
-            <td class="description last">Status of the appointment. Must be one of: 'pending', 'completed', 'confirmed'.</td>
+            <td class="description last">New status of the appointment.</td>
         </tr>
 
     
+    </tbody>
+</table>
 
-        <tr>
-            
-                <td class="name"><code>createdAt</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-
-
-
-            
             </td>
-
-            
-                <td class="attributes">
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Timestamp of when the appointment was created (automatically added).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>updatedAt</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Timestamp of when the appointment was last updated (automatically added).</td>
         </tr>
 
     
@@ -664,32 +760,50 @@
 
 
 
-<div class="description usertext">
-    Medical appointments DB schema.
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    - Returns a JSON response with the updated appointment or an error message.
 </div>
 
 
 
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
             
-<span class="param-type">Object</span>
 
+    
 
+    <h4 class="name" id=".getAllAppointments"><span class="type-signature type-signature-async, static">(async, static) </span>getAllAppointments<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
 
-        </li>
-    </ul>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="HistorySchema">HistorySchema</h4>
-
+    
 
 
 
@@ -697,13 +811,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Medical history DB schema.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Fetches all appointments from the database.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_history.model.js.html">models/history.model.js</a>, <a href="models_history.model.js.html#line3">line 3</a>
+        <a href="controllers_appointment.controller.js.html">controllers/appointment.controller.js</a>, <a href="controllers_appointment.controller.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -740,11 +854,20 @@
 
 
 
-    <h5 class="subsection-title">Properties:</h5>
 
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="props">
+<table class="params">
     <thead>
     <tr>
         
@@ -766,13 +889,13 @@
 
         <tr>
             
-                <td class="name"><code>patientDNI</code></td>
+                <td class="name"><code>req</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Object</span>
 
 
 
@@ -783,20 +906,20 @@
 
             
 
-            <td class="description last">DNI of the patient (required).</td>
+            <td class="description last">Express request object.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>appointmentIdArray</code></td>
+                <td class="name"><code>res</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;mongoose.Types.ObjectId></span>
+<span class="param-type">Object</span>
 
 
 
@@ -807,55 +930,7 @@
 
             
 
-            <td class="description last">Array of appointment IDs associated with the patient.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>createdAt</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Timestamp of when the history was created (automatically added).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>updatedAt</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Timestamp of when the history was last updated (automatically added).</td>
+            <td class="description last">Express response object.</td>
         </tr>
 
     
@@ -867,32 +942,50 @@
 
 
 
-<div class="description usertext">
-    Medical history DB schema.
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    - Returns a JSON response with the list of appointments or an error message.
 </div>
 
 
 
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
             
-<span class="param-type">Object</span>
 
+    
 
+    <h4 class="name" id=".getAppointmentsByDNI"><span class="type-signature type-signature-async, static">(async, static) </span>getAppointmentsByDNI<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
 
-        </li>
-    </ul>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="UserSchema">UserSchema</h4>
-
+    
 
 
 
@@ -900,13 +993,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>User DB schema.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Fetches appointments by DNI (either patientDNI or doctorDNI).</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user.model.js.html">models/user.model.js</a>, <a href="models_user.model.js.html#line3">line 3</a>
+        <a href="controllers_appointment.controller.js.html">controllers/appointment.controller.js</a>, <a href="controllers_appointment.controller.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -943,11 +1036,226 @@
 
 
 
-    <h5 class="subsection-title">Properties:</h5>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express request object.</td>
+        </tr>
 
     
 
-<table class="props">
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express response object.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>req.params.dni</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The DNI to search for.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    - Returns a JSON response with the list of appointments or an error message.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".makeAppointment"><span class="type-signature type-signature-async, static">(async, static) </span>makeAppointment<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Creates a new medical appointment.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_appointment.controller.js.html">controllers/appointment.controller.js</a>, <a href="controllers_appointment.controller.js.html#line65">line 65</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -971,7 +1279,71 @@
 
         <tr>
             
-                <td class="name"><code>DNI</code></td>
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Express request object.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Express response object.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>req.body.patientDNI</code></td>
             
 
             <td class="type">
@@ -989,19 +1361,21 @@
                 
 
                 
+
+                
                 </td>
             
 
             
 
-            <td class="description last">DNI of the user (required, unique).</td>
+            <td class="description last">DNI of the patient.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>req.body.doctorDNI</code></td>
             
 
             <td class="type">
@@ -1019,34 +1393,6 @@
                 
 
                 
-                </td>
-            
-
-            
-
-            <td class="description last">Name of the user (required).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>email</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
 
                 
                 </td>
@@ -1054,266 +1400,14 @@
 
             
 
-            <td class="description last">Email of the user (required, unique).</td>
+            <td class="description last">DNI of the doctor.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Password of the user (required).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>role</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Role of the user. Must be one of: 'patient', 'doctor', 'admin' (required).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>phone</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Phone number of the user (optional).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>address</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Address of the user (optional).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>specialization</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Specialization of the user (optional, typically for doctors).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>profilePicture</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">URL or path to the user's profile picture (optional).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>resetPasswordToken</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Hashed token for password reset (optional).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>resetPasswordExpires</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Expiration time for the password reset token (optional).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>createdAt</code></td>
+                <td class="name"><code>req.body.date</code></td>
             
 
             <td class="type">
@@ -1331,25 +1425,27 @@
                 
 
                 
+
+                
                 </td>
             
 
             
 
-            <td class="description last">Timestamp of when the user was created (automatically added).</td>
+            <td class="description last">Date and time of the appointment.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>updatedAt</code></td>
+                <td class="name"><code>req.body.description</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Date</span>
+<span class="param-type">string</span>
 
 
 
@@ -1359,6 +1455,10 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
+
+                
 
                 
                 </td>
@@ -1366,7 +1466,41 @@
 
             
 
-            <td class="description last">Timestamp of when the user was last updated (automatically added).</td>
+            <td class="description last">Optional description of the appointment.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>req.body.status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Status of the appointment (default: 'pending').</td>
         </tr>
 
     
@@ -1378,29 +1512,45 @@
 
 
 
-<div class="description usertext">
-    User DB schema.
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    - Returns a JSON response with the created appointment or an error message.
 </div>
 
 
 
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
 
 
 
-        </li>
-    </ul>
+    </dd>
+</dl>
+
+    
 
 
 
+        
+    
 
-
-
-            
     
 
     
