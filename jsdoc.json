@@ -1,0 +1,28 @@
+{
+  "source": {
+    "include": ["src"],
+    "exclude": ["node_modules"]
+  },
+  "opts": {
+    "destination": "docs",
+    "recurse": true,
+    "template": "node_modules/docdash",
+    "readme": "README.md"
+  },
+  "templates": {
+    "docdash": {
+      "static": true,
+      "search": true,
+      "collapse": true,
+      "scripts": [],
+      "menu": {
+        "Project Website": {
+          "href": "https://yourproject.com",
+          "target": "_blank",
+          "class": "menu-item",
+          "id": "website_link"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>models/user.model.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AppointmentController.html">AppointmentController</a><ul class='methods'><li data-type='method'><a href="module-AppointmentController.html#.deleteAppointment">deleteAppointment</a></li><li data-type='method'><a href="module-AppointmentController.html#.editAppointment">editAppointment</a></li><li data-type='method'><a href="module-AppointmentController.html#.getAllAppointments">getAllAppointments</a></li><li data-type='method'><a href="module-AppointmentController.html#.getAppointmentsByDNI">getAppointmentsByDNI</a></li><li data-type='method'><a href="module-AppointmentController.html#.makeAppointment">makeAppointment</a></li></ul></li><li><a href="module-AppointmentRouter.html">AppointmentRouter</a><ul class='methods'><li data-type='method'><a href="module-AppointmentRouter.html#.DELETE/appointments/:id">DELETE /appointments/:id</a></li><li data-type='method'><a href="module-AppointmentRouter.html#.GET/appointments/:dni">GET /appointments/:dni</a></li><li data-type='method'><a href="module-AppointmentRouter.html#.POST/appointments">POST /appointments</a></li><li data-type='method'><a href="module-AppointmentRouter.html#.PUT/appointments/:id">PUT /appointments/:id</a></li><li data-type='method'><a href="module-AppointmentRouter.html#~GET/appointments">GET /appointments</a></li></ul></li><li><a href="module-HistoryController.html">HistoryController</a><ul class='methods'><li data-type='method'><a href="module-HistoryController.html#.createMedicalHistory">createMedicalHistory</a></li><li data-type='method'><a href="module-HistoryController.html#.deleteHistory">deleteHistory</a></li><li data-type='method'><a href="module-HistoryController.html#.getAllHistories">getAllHistories</a></li></ul></li><li><a href="module-HistoryRouter.html">HistoryRouter</a><ul class='methods'><li data-type='method'><a href="module-HistoryRouter.html#.DELETE/history/:patientDNI">DELETE /history/:patientDNI</a></li><li data-type='method'><a href="module-HistoryRouter.html#.GET/history">GET /history</a></li><li data-type='method'><a href="module-HistoryRouter.html#.POST/history">POST /history</a></li></ul></li><li><a href="module-UserController.html">UserController</a><ul class='methods'><li data-type='method'><a href="module-UserController.html#.createUser">createUser</a></li><li data-type='method'><a href="module-UserController.html#.deleteUser">deleteUser</a></li><li data-type='method'><a href="module-UserController.html#.forgotPassword">forgotPassword</a></li><li data-type='method'><a href="module-UserController.html#.getAllUsers">getAllUsers</a></li><li data-type='method'><a href="module-UserController.html#.getUserByDni">getUserByDni</a></li><li data-type='method'><a href="module-UserController.html#.getUsersByRole">getUsersByRole</a></li><li data-type='method'><a href="module-UserController.html#.loginUser">loginUser</a></li><li data-type='method'><a href="module-UserController.html#.resetPassword">resetPassword</a></li><li data-type='method'><a href="module-UserController.html#.updateUserByDni">updateUserByDni</a></li></ul></li><li><a href="module-UserRouter.html">UserRouter</a><ul class='methods'><li data-type='method'><a href="module-UserRouter.html#.DELETE/users/:dni">DELETE /users/:dni</a></li><li data-type='method'><a href="module-UserRouter.html#.GET/users">GET /users</a></li><li data-type='method'><a href="module-UserRouter.html#.GET/users/:dni">GET /users/:dni</a></li><li data-type='method'><a href="module-UserRouter.html#.GET/users/role/:role">GET /users/role/:role</a></li><li data-type='method'><a href="module-UserRouter.html#.POST/users">POST /users</a></li><li data-type='method'><a href="module-UserRouter.html#.POST/users/login">POST /users/login</a></li><li data-type='method'><a href="module-UserRouter.html#.POST/users/recover/forgot-password">POST /users/recover/forgot-password</a></li><li data-type='method'><a href="module-UserRouter.html#.PUT/users/:dni">PUT /users/:dni</a></li><li data-type='method'><a href="module-UserRouter.html#~POST/users/recover/reset-password">POST /users/recover/reset-password</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#Appointment">Appointment</a></li><li><a href="global.html#History">History</a></li><li><a href="global.html#User">User</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">models/user.model.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import mongoose from "mongoose";
+
+/**
+ * User DB schema.
+ * @typedef {Object} UserSchema
+ * @property {string} DNI - DNI of the user (required, unique).
+ * @property {string} name - Name of the user (required).
+ * @property {string} email - Email of the user (required, unique).
+ * @property {string} password - Password of the user (required).
+ * @property {string} role - Role of the user. Must be one of: 'patient', 'doctor', 'admin' (required).
+ * @property {string} [phone] - Phone number of the user (optional).
+ * @property {string} [address] - Address of the user (optional).
+ * @property {string} [specialization] - Specialization of the user (optional, typically for doctors).
+ * @property {string} [profilePicture] - URL or path to the user's profile picture (optional).
+ * @property {string} [resetPasswordToken] - Hashed token for password reset (optional).
+ * @property {Date} [resetPasswordExpires] - Expiration time for the password reset token (optional).
+ * @property {Date} createdAt - Timestamp of when the user was created (automatically added).
+ * @property {Date} updatedAt - Timestamp of when the user was last updated (automatically added).
+ */
+const userSchema = new mongoose.Schema({
+    DNI: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    role: {
+        type: String,
+        enum: ['patient', 'doctor', 'admin'],
+        required: true
+    },
+    phone: String,
+    address: String,
+    specialization: String,
+    profilePicture: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
+}, {
+    timestamps: true
+});
+
+/**
+ * Mongoose model for the User schema.
+ * @type {mongoose.Model&lt;UserSchema>}
+ */
+const User = mongoose.model('User', userSchema);
+
+export default User;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Fri Jan 31 2025 13:35:24 GMT+0100 (Central European Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

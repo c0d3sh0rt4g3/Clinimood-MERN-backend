@@ -11,6 +11,10 @@
     "nodemailer": "^6.10.0"
   },
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node src/server.js"
+  },
+  "devDependencies": {
+    "docdash": "^2.0.2",
+    "jsdoc": "^4.0.4"
   }
 }

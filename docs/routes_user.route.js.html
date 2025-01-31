@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>routes/user.route.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AppointmentController.html">AppointmentController</a><ul class='methods'><li data-type='method'><a href="module-AppointmentController.html#.deleteAppointment">deleteAppointment</a></li><li data-type='method'><a href="module-AppointmentController.html#.editAppointment">editAppointment</a></li><li data-type='method'><a href="module-AppointmentController.html#.getAllAppointments">getAllAppointments</a></li><li data-type='method'><a href="module-AppointmentController.html#.getAppointmentsByDNI">getAppointmentsByDNI</a></li><li data-type='method'><a href="module-AppointmentController.html#.makeAppointment">makeAppointment</a></li></ul></li><li><a href="module-AppointmentRouter.html">AppointmentRouter</a><ul class='methods'><li data-type='method'><a href="module-AppointmentRouter.html#.DELETE/appointments/:id">DELETE /appointments/:id</a></li><li data-type='method'><a href="module-AppointmentRouter.html#.GET/appointments/:dni">GET /appointments/:dni</a></li><li data-type='method'><a href="module-AppointmentRouter.html#.POST/appointments">POST /appointments</a></li><li data-type='method'><a href="module-AppointmentRouter.html#.PUT/appointments/:id">PUT /appointments/:id</a></li><li data-type='method'><a href="module-AppointmentRouter.html#~GET/appointments">GET /appointments</a></li></ul></li><li><a href="module-HistoryController.html">HistoryController</a><ul class='methods'><li data-type='method'><a href="module-HistoryController.html#.createMedicalHistory">createMedicalHistory</a></li><li data-type='method'><a href="module-HistoryController.html#.deleteHistory">deleteHistory</a></li><li data-type='method'><a href="module-HistoryController.html#.getAllHistories">getAllHistories</a></li></ul></li><li><a href="module-HistoryRouter.html">HistoryRouter</a><ul class='methods'><li data-type='method'><a href="module-HistoryRouter.html#.DELETE/history/:patientDNI">DELETE /history/:patientDNI</a></li><li data-type='method'><a href="module-HistoryRouter.html#.GET/history">GET /history</a></li><li data-type='method'><a href="module-HistoryRouter.html#.POST/history">POST /history</a></li></ul></li><li><a href="module-UserController.html">UserController</a><ul class='methods'><li data-type='method'><a href="module-UserController.html#.createUser">createUser</a></li><li data-type='method'><a href="module-UserController.html#.deleteUser">deleteUser</a></li><li data-type='method'><a href="module-UserController.html#.forgotPassword">forgotPassword</a></li><li data-type='method'><a href="module-UserController.html#.getAllUsers">getAllUsers</a></li><li data-type='method'><a href="module-UserController.html#.getUserByDni">getUserByDni</a></li><li data-type='method'><a href="module-UserController.html#.getUsersByRole">getUsersByRole</a></li><li data-type='method'><a href="module-UserController.html#.loginUser">loginUser</a></li><li data-type='method'><a href="module-UserController.html#.resetPassword">resetPassword</a></li><li data-type='method'><a href="module-UserController.html#.updateUserByDni">updateUserByDni</a></li></ul></li><li><a href="module-UserRouter.html">UserRouter</a><ul class='methods'><li data-type='method'><a href="module-UserRouter.html#.DELETE/users/:dni">DELETE /users/:dni</a></li><li data-type='method'><a href="module-UserRouter.html#.GET/users">GET /users</a></li><li data-type='method'><a href="module-UserRouter.html#.GET/users/:dni">GET /users/:dni</a></li><li data-type='method'><a href="module-UserRouter.html#.GET/users/role/:role">GET /users/role/:role</a></li><li data-type='method'><a href="module-UserRouter.html#.POST/users">POST /users</a></li><li data-type='method'><a href="module-UserRouter.html#.POST/users/login">POST /users/login</a></li><li data-type='method'><a href="module-UserRouter.html#.POST/users/recover/forgot-password">POST /users/recover/forgot-password</a></li><li data-type='method'><a href="module-UserRouter.html#.PUT/users/:dni">PUT /users/:dni</a></li><li data-type='method'><a href="module-UserRouter.html#~POST/users/recover/reset-password">POST /users/recover/reset-password</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#Appointment">Appointment</a></li><li><a href="global.html#History">History</a></li><li><a href="global.html#User">User</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">routes/user.route.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import express from "express";
+import {
+    createUser,
+    deleteUser,
+    getAllUsers,
+    getUserByDni,
+    getUsersByRole,
+    loginUser,
+    forgotPassword,
+    resetPassword,
+    updateUserByDni
+} from "../controllers/user.controller.js";
+
+/**
+ * Express router for handling user-related routes.
+ * @module UserRouter
+ * @type {express.Router}
+ */
+const router = express.Router();
+
+/**
+ * Route to fetch all users.
+ * @name GET /users
+ * @function
+ * @memberof module:UserRouter
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @see {@link module:controllers/user.controller.getAllUsers}
+ */
+router.get("/", getAllUsers);
+
+/**
+ * Route to fetch a user by their DNI.
+ * @name GET /users/:dni
+ * @function
+ * @memberOf module:UserRouter
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.dni - The DNI of the user to fetch.
+ * @see {@link module:controllers/user.controller.getUserByDni}
+ */
+router.get("/:dni", getUserByDni);
+
+/**
+ * Route to fetch all users with a specific role.
+ * @name GET /users/role/:role
+ * @function
+ * @memberOf module:UserRouter
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.role - The role to filter users by.
+ * @see {@link module:controllers/user.controller.getUsersByRole}
+ */
+router.get("/role/:role", getUsersByRole);
+
+/**
+ * Route to create a new user.
+ * @name POST /users
+ * @function
+ * @memberOf module:UserRouter
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.body.DNI - DNI of the user.
+ * @param {string} req.body.name - Name of the user.
+ * @param {string} req.body.email - Email of the user.
+ * @param {string} req.body.password - Password of the user.
+ * @param {string} req.body.role - Role of the user.
+ * @see {@link module:controllers/user.controller.createUser}
+ */
+router.post("/", createUser);
+
+/**
+ * Route to update a user by their DNI.
+ * @name PUT /users/:dni
+ * @function
+ * @memberOf module:UserRouter
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.dni - The DNI of the user to update.
+ * @param {Object} req.body - The updates to apply to the user.
+ * @see {@link module:controllers/user.controller.updateUserByDni}
+ */
+router.put("/:dni", updateUserByDni);
+
+/**
+ * Route to delete a user by their DNI.
+ * @name DELETE /users/:dni
+ * @function
+ * @memberOf module:UserRouter
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.dni - The DNI of the user to delete.
+ * @see {@link module:controllers/user.controller.deleteUser}
+ */
+router.delete("/:dni", deleteUser);
+
+/**
+ * Route to log in a user.
+ * @name POST /users/login
+ * @function
+ * @memberOf module:UserRouter
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.body.email - Email of the user.
+ * @param {string} req.body.password - Password of the user.
+ * @see {@link module:controllers/user.controller.loginUser}
+ */
+router.post("/login", loginUser);
+
+/**
+ * Route to send a password reset token to the user's email.
+ * @name POST /users/recover/forgot-password
+ * @function
+ * @memberOf module:UserRouter
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.body.email - Email of the user.
+ * @see {@link module:controllers/user.controller.forgotPassword}
+ */
+router.post("/recover/forgot-password", forgotPassword);
+
+/**
+ * Route to reset the user's password using a token.
+ * @name POST /users/recover/reset-password
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.body.email - Email of the user.
+ * @param {string} req.body.token - Password reset token.
+ * @param {string} req.body.newPassword - New password for the user.
+ * @see {@link module:controllers/user.controller.resetPassword}
+ */
+router.post("/recover/reset-password", resetPassword);
+
+export default router;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Fri Jan 31 2025 13:35:24 GMT+0100 (Central European Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
