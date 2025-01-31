@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>controllers/history.controller.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Appointment">Appointment</a></li><li><a href="global.html#DELETE/appointments/:id">DELETE /appointments/:id</a></li><li><a href="global.html#DELETE/history/:patientDNI">DELETE /history/:patientDNI</a></li><li><a href="global.html#GET/appointments">GET /appointments</a></li><li><a href="global.html#GET/appointments/:dni">GET /appointments/:dni</a></li><li><a href="global.html#GET/history">GET /history</a></li><li><a href="global.html#History">History</a></li><li><a href="global.html#POST/appointments">POST /appointments</a></li><li><a href="global.html#POST/history">POST /history</a></li><li><a href="global.html#PUT/appointments/:id">PUT /appointments/:id</a></li><li><a href="global.html#createMedicalHistory">createMedicalHistory</a></li><li><a href="global.html#deleteAppointment">deleteAppointment</a></li><li><a href="global.html#deleteHistory">deleteHistory</a></li><li><a href="global.html#editAppointment">editAppointment</a></li><li><a href="global.html#getAllAppointments">getAllAppointments</a></li><li><a href="global.html#getAllHistories">getAllHistories</a></li><li><a href="global.html#getAppointmentsByDNI">getAppointmentsByDNI</a></li><li><a href="global.html#makeAppointment">makeAppointment</a></li><li><a href="global.html#router">router</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">controllers/history.controller.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import History from "../models/history.model.js";
+import Appointment from "../models/appointment.model.js";
+
+/**
+ * Fetches all medical histories from the database.
+ * @async
+ * @function getAllHistories
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @returns {Promise&lt;void>} - Returns a JSON response with the list of medical histories or an error message.
+ */
+export const getAllHistories = async (req, res) => {
+    try {
+        const histories = await History.find({});
+        res.status(200).json({ success: true, data: histories });
+    } catch (error) {
+        console.error(`Error in fetching medical histories: ${error.message}`);
+        res.status(500).json({ success: false, error: error.message });
+    }
+};
+
+/**
+ * Creates a new medical history for a patient.
+ * @async
+ * @function createMedicalHistory
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.body.patientDNI - The DNI of the patient for whom the medical history is being created.
+ * @returns {Promise&lt;void>} - Returns a JSON response with the created medical history or an error message.
+ */
+export const createMedicalHistory = async (req, res) => {
+    try {
+        const { patientDNI } = req.body;
+
+        if (!patientDNI) {
+            return res.status(400).json({ message: "Patient DNI is required." });
+        }
+
+        // Fetch all appointments
+        const appointments = await Appointment.find({});
+        const appointmentsArray = [];
+
+        // Filter appointments belonging to the specified patient
+        appointments.forEach(appointment => {
+            if (appointment.patientDNI === patientDNI) {
+                appointmentsArray.push(appointment.id);
+            }
+        });
+
+        // Create a new medical history
+        const newHistory = new History({ patientDNI, appointmentIdArray: appointmentsArray });
+
+        // Save the medical history to the database
+        const savedHistory = await newHistory.save();
+
+        res.status(201).json({ message: "Medical history created successfully.", medicalHistory: savedHistory });
+    } catch (error) {
+        console.error("Error creating medical history:", error);
+        res.status(500).json({ message: "An error occurred while creating the medical history.", error: error.message });
+    }
+};
+
+/**
+ * Deletes a medical history for a specified patient.
+ * @async
+ * @function deleteHistory
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.patientDNI - The DNI of the patient whose medical history is to be deleted.
+ * @returns {Promise&lt;void>} - Returns a JSON response indicating success or failure.
+ */
+export const deleteHistory = async (req, res) => {
+    const { patientDNI } = req.params;
+
+    try {
+        // Find and delete the medical history by patient DNI
+        const deletedHistory = await History.findOneAndDelete({ patientDNI: patientDNI });
+        if (!deletedHistory) {
+            return res.status(404).json({ success: false, message: `Medical history of the patient with DNI ${patientDNI} not found` });
+        }
+
+        res.status(200).json({ success: true, message: `Medical history of patient with DNI ${patientDNI} deleted successfully` });
+    } catch (error) {
+        console.error(`Error in deleting medical history: ${error.message}`);
+        res.status(500).json({ success: false, error: error.message });
+    }
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Fri Jan 31 2025 11:59:12 GMT+0100 (Central European Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
