@@ -1,6 +1,5 @@
 import User from "../models/user.model.js"
 import Appointment from "../models/appointment.model.js"
-import res from "express/lib/response.js";
 
 // Get all appointments
 export const getAllAppointments = async (req, res) => {
@@ -12,6 +11,36 @@ export const getAllAppointments = async (req, res) => {
         res.status(500).json({success: false, error: error.message})
     }
 }
+
+// Get all appointments by DNI
+export const getAppointmentsByDNI = async (req, res) => {
+    const { dni } = req.params
+
+    try {
+        // Find appointments where the DNI matches either the patientDNI or doctorDNI
+        const appointments = await Appointment.find({
+            $or: [{ patientDNI: dni }, { doctorDNI: dni }]
+        })
+
+        if (appointments.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: `No appointments found for DNI: ${dni}`
+            })
+        }
+        res.status(200).json({
+            success: true,
+            data: appointments
+        })
+    } catch (error) {
+        console.error(`Error in fetching appointments by DNI: ${error.message}`)
+        res.status(500).json({
+            success: false,
+            error: `Error fetching appointments for DNI: ${error.message}`
+        })
+    }
+}
+
 
 // Make an apointment
 export const makeAppointment = async (req, res) => {
