@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>routes/appointment.route.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Appointment">Appointment</a></li><li><a href="global.html#DELETE/appointments/:id">DELETE /appointments/:id</a></li><li><a href="global.html#DELETE/history/:patientDNI">DELETE /history/:patientDNI</a></li><li><a href="global.html#GET/appointments">GET /appointments</a></li><li><a href="global.html#GET/appointments/:dni">GET /appointments/:dni</a></li><li><a href="global.html#GET/history">GET /history</a></li><li><a href="global.html#History">History</a></li><li><a href="global.html#POST/appointments">POST /appointments</a></li><li><a href="global.html#POST/history">POST /history</a></li><li><a href="global.html#PUT/appointments/:id">PUT /appointments/:id</a></li><li><a href="global.html#createMedicalHistory">createMedicalHistory</a></li><li><a href="global.html#deleteAppointment">deleteAppointment</a></li><li><a href="global.html#deleteHistory">deleteHistory</a></li><li><a href="global.html#editAppointment">editAppointment</a></li><li><a href="global.html#getAllAppointments">getAllAppointments</a></li><li><a href="global.html#getAllHistories">getAllHistories</a></li><li><a href="global.html#getAppointmentsByDNI">getAppointmentsByDNI</a></li><li><a href="global.html#makeAppointment">makeAppointment</a></li><li><a href="global.html#router">router</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">routes/appointment.route.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import express from "express";
+import {
+    deleteAppointment,
+    editAppointment,
+    getAllAppointments,
+    getAppointmentsByDNI,
+    makeAppointment
+} from "../controllers/appointment.controller.js";
+
+/**
+ * Express router for handling appointment-related routes.
+ * @type {express.Router}
+ */
+const router = express.Router();
+
+/**
+ * Route to fetch all appointments.
+ * @name GET /appointments
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @see {@link module:controllers/appointment.controller.getAllAppointments}
+ */
+router.get("/", getAllAppointments);
+
+/**
+ * Route to fetch appointments by DNI (either patientDNI or doctorDNI).
+ * @name GET /appointments/:dni
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.dni - The DNI to search for.
+ * @see {@link module:controllers/appointment.controller.getAppointmentsByDNI}
+ */
+router.get("/:dni", getAppointmentsByDNI);
+
+/**
+ * Route to create a new medical appointment.
+ * @name POST /appointments
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.body.patientDNI - DNI of the patient.
+ * @param {string} req.body.doctorDNI - DNI of the doctor.
+ * @param {Date} req.body.date - Date and time of the appointment.
+ * @param {string} [req.body.description] - Optional description of the appointment.
+ * @param {string} [req.body.status] - Status of the appointment (default: 'pending').
+ * @see {@link module:controllers/appointment.controller.makeAppointment}
+ */
+router.post("/", makeAppointment);
+
+/**
+ * Route to update an existing appointment by ID.
+ * @name PUT /appointments/:id
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.id - The ID of the appointment to update.
+ * @param {Object} req.body - The updates to apply to the appointment.
+ * @param {string} [req.body.patientDNI] - New DNI of the patient.
+ * @param {string} [req.body.doctorDNI] - New DNI of the doctor.
+ * @param {Date} [req.body.date] - New date and time of the appointment.
+ * @param {string} [req.body.description] - New description of the appointment.
+ * @param {string} [req.body.status] - New status of the appointment.
+ * @see {@link module:controllers/appointment.controller.editAppointment}
+ */
+router.put("/:id", editAppointment);
+
+/**
+ * Route to delete an appointment by ID.
+ * @name DELETE /appointments/:id
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.id - The ID of the appointment to delete.
+ * @see {@link module:controllers/appointment.controller.deleteAppointment}
+ */
+router.delete("/:id", deleteAppointment);
+
+export default router;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Fri Jan 31 2025 11:59:12 GMT+0100 (Central European Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
