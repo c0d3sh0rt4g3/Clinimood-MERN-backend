@@ -13,6 +13,7 @@ import {
 
 /**
  * Express router for handling user-related routes.
+ * @module UserRouter
  * @type {express.Router}
  */
 const router = express.Router();
@@ -21,6 +22,7 @@ const router = express.Router();
  * Route to fetch all users.
  * @name GET /users
  * @function
+ * @memberof module:UserRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -32,6 +34,7 @@ router.get("/", getAllUsers);
  * Route to fetch a user by their DNI.
  * @name GET /users/:dni
  * @function
+ * @memberOf module:UserRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -44,6 +47,7 @@ router.get("/:dni", getUserByDni);
  * Route to fetch all users with a specific role.
  * @name GET /users/role/:role
  * @function
+ * @memberOf module:UserRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -56,6 +60,7 @@ router.get("/role/:role", getUsersByRole);
  * Route to create a new user.
  * @name POST /users
  * @function
+ * @memberOf module:UserRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -72,6 +77,7 @@ router.post("/", createUser);
  * Route to update a user by their DNI.
  * @name PUT /users/:dni
  * @function
+ * @memberOf module:UserRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -85,6 +91,7 @@ router.put("/:dni", updateUserByDni);
  * Route to delete a user by their DNI.
  * @name DELETE /users/:dni
  * @function
+ * @memberOf module:UserRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -97,6 +104,7 @@ router.delete("/:dni", deleteUser);
  * Route to log in a user.
  * @name POST /users/login
  * @function
+ * @memberOf module:UserRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
@@ -110,6 +118,7 @@ router.post("/login", loginUser);
  * Route to send a password reset token to the user's email.
  * @name POST /users/recover/forgot-password
  * @function
+ * @memberOf module:UserRouter
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.

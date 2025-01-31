@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>HistoryController - Documentation</title>
+    <title>HistoryRouter - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -35,7 +35,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">HistoryController</h1>
+    <h1 class="page-title">HistoryRouter</h1>
     
 
     
@@ -58,7 +58,7 @@
         <div class="container-overview">
         
             
-                <div class="description usertext">Controller for handling history-related operations.</div>
+                <div class="description usertext">Express router for handling medical history-related routes.</div>
             
 
             
@@ -70,13 +70,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Controller for handling history-related operations.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Express router for handling medical history-related routes.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_history.controller.js.html">controllers/history.controller.js</a>, <a href="controllers_history.controller.js.html#line4">line 4</a>
+        <a href="routes_history.route.js.html">routes/history.route.js</a>, <a href="routes_history.route.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -167,7 +167,7 @@
 
     
 
-    <h4 class="name" id=".createMedicalHistory"><span class="type-signature type-signature-async, static">(async, static) </span>createMedicalHistory<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    <h4 class="name" id=".DELETE/history/:patientDNI"><span class="type-signature type-signature-async, static">(async, static) </span>DELETE /history/:patientDNI<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
 
     
 
@@ -177,13 +177,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Creates a new medical history for a patient.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Route to delete a medical history by patient DNI.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_history.controller.js.html">controllers/history.controller.js</a>, <a href="controllers_history.controller.js.html#line28">line 28</a>
+        <a href="routes_history.route.js.html">routes/history.route.js</a>, <a href="routes_history.route.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -214,211 +214,12 @@
     
 
     
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Express request object.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Express response object.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>req.body.patientDNI</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The DNI of the patient for whom the medical history is being created.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    - Returns a JSON response with the created medical history or an error message.
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;void></span>
-
-
-
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>module:controllers/history.controller.deleteHistory</li>
+        </ul>
     </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".deleteHistory"><span class="type-signature type-signature-async, static">(async, static) </span>deleteHistory<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Deletes a medical history for a specified patient.</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_history.controller.js.html">controllers/history.controller.js</a>, <a href="controllers_history.controller.js.html#line70">line 70</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
     
 
     
@@ -526,7 +327,7 @@
 
             
 
-            <td class="description last">The DNI of the patient whose medical history is to be deleted.</td>
+            <td class="description last">DNI of the patient whose medical history is to be deleted.</td>
         </tr>
 
     
@@ -548,29 +349,6 @@
 
 
 
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    - Returns a JSON response indicating success or failure.
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;void></span>
-
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -579,7 +357,7 @@
 
     
 
-    <h4 class="name" id=".getAllHistories"><span class="type-signature type-signature-async, static">(async, static) </span>getAllHistories<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    <h4 class="name" id=".GET/history"><span class="type-signature type-signature-async, static">(async, static) </span>GET /history<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
 
     
 
@@ -589,13 +367,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Fetches all medical histories from the database.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Route to fetch all medical histories.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_history.controller.js.html">controllers/history.controller.js</a>, <a href="controllers_history.controller.js.html#line9">line 9</a>
+        <a href="routes_history.route.js.html">routes/history.route.js</a>, <a href="routes_history.route.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -625,6 +403,13 @@
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>module:controllers/history.controller.getAllHistories</li>
+        </ul>
+    </dd>
     
 
     
@@ -730,29 +515,196 @@
 
 
 
-<h5 class="h5-returns">Returns:</h5>
+
+
 
         
-<div class="param-desc">
-    - Returns a JSON response with the list of medical histories or an error message.
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;void></span>
-
-
-
-    </dd>
-</dl>
+            
 
     
+
+    <h4 class="name" id=".POST/history"><span class="type-signature type-signature-async, static">(async, static) </span>POST /history<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Route to create a new medical history.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_history.route.js.html">routes/history.route.js</a>, <a href="routes_history.route.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>module:controllers/history.controller.createMedicalHistory</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express request object.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express response object.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>req.body.patientDNI</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">DNI of the patient for whom the medical history is being created.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
