@@ -13,7 +13,7 @@ app.use(express.json());
 
 // Configure CORS
 const corsOptions = {
-    origin: process.env.FRONTEND_URL || "http://localhost:5173" || "http://localhost:5000",
+    origin: "https://clinimood-mern-frontend.vercel.app" || "http://localhost:5173" || "http://localhost:5000",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 };
