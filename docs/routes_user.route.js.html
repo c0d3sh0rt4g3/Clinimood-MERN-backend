@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>routes/appointment.route.js - Documentation</title>
+    <title>routes/user.route.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -35,7 +35,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">routes/appointment.route.js</h1>
+    <h1 class="page-title">routes/user.route.js</h1>
     
 
     
@@ -47,87 +47,137 @@
         <article>
             <pre class="prettyprint source linenums"><code>import express from "express";
 import {
-    deleteAppointment,
-    editAppointment,
-    getAllAppointments,
-    getAppointmentsByDNI,
-    makeAppointment
-} from "../controllers/appointment.controller.js";
+    createUser,
+    deleteUser,
+    getAllUsers,
+    getUserByDni,
+    getUsersByRole,
+    loginUser,
+    forgotPassword,
+    resetPassword,
+    updateUserByDni
+} from "../controllers/user.controller.js";
 
 /**
- * Express router for handling appointment-related routes.
+ * Express router for handling user-related routes.
  * @type {express.Router}
  */
 const router = express.Router();
 
 /**
- * Route to fetch all appointments.
- * @name GET /appointments
+ * Route to fetch all users.
+ * @name GET /users
  * @function
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
- * @see {@link module:controllers/appointment.controller.getAllAppointments}
+ * @see {@link module:controllers/user.controller.getAllUsers}
  */
-router.get("/", getAllAppointments);
+router.get("/", getAllUsers);
 
 /**
- * Route to fetch appointments by DNI (either patientDNI or doctorDNI).
- * @name GET /appointments/:dni
+ * Route to fetch a user by their DNI.
+ * @name GET /users/:dni
  * @function
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
- * @param {string} req.params.dni - The DNI to search for.
- * @see {@link module:controllers/appointment.controller.getAppointmentsByDNI}
+ * @param {string} req.params.dni - The DNI of the user to fetch.
+ * @see {@link module:controllers/user.controller.getUserByDni}
  */
-router.get("/:dni", getAppointmentsByDNI);
+router.get("/:dni", getUserByDni);
 
 /**
- * Route to create a new medical appointment.
- * @name POST /appointments
+ * Route to fetch all users with a specific role.
+ * @name GET /users/role/:role
  * @function
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
- * @param {string} req.body.patientDNI - DNI of the patient.
- * @param {string} req.body.doctorDNI - DNI of the doctor.
- * @param {Date} req.body.date - Date and time of the appointment.
- * @param {string} [req.body.description] - Optional description of the appointment.
- * @param {string} [req.body.status] - Status of the appointment (default: 'pending').
- * @see {@link module:controllers/appointment.controller.makeAppointment}
+ * @param {string} req.params.role - The role to filter users by.
+ * @see {@link module:controllers/user.controller.getUsersByRole}
  */
-router.post("/", makeAppointment);
+router.get("/role/:role", getUsersByRole);
 
 /**
- * Route to update an existing appointment by ID.
- * @name PUT /appointments/:id
+ * Route to create a new user.
+ * @name POST /users
  * @function
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
- * @param {string} req.params.id - The ID of the appointment to update.
- * @param {Object} req.body - The updates to apply to the appointment.
- * @param {string} [req.body.patientDNI] - New DNI of the patient.
- * @param {string} [req.body.doctorDNI] - New DNI of the doctor.
- * @param {Date} [req.body.date] - New date and time of the appointment.
- * @param {string} [req.body.description] - New description of the appointment.
- * @param {string} [req.body.status] - New status of the appointment.
- * @see {@link module:controllers/appointment.controller.editAppointment}
+ * @param {string} req.body.DNI - DNI of the user.
+ * @param {string} req.body.name - Name of the user.
+ * @param {string} req.body.email - Email of the user.
+ * @param {string} req.body.password - Password of the user.
+ * @param {string} req.body.role - Role of the user.
+ * @see {@link module:controllers/user.controller.createUser}
  */
-router.put("/:id", editAppointment);
+router.post("/", createUser);
 
 /**
- * Route to delete an appointment by ID.
- * @name DELETE /appointments/:id
+ * Route to update a user by their DNI.
+ * @name PUT /users/:dni
  * @function
  * @async
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
- * @param {string} req.params.id - The ID of the appointment to delete.
- * @see {@link module:controllers/appointment.controller.deleteAppointment}
+ * @param {string} req.params.dni - The DNI of the user to update.
+ * @param {Object} req.body - The updates to apply to the user.
+ * @see {@link module:controllers/user.controller.updateUserByDni}
  */
-router.delete("/:id", deleteAppointment);
+router.put("/:dni", updateUserByDni);
+
+/**
+ * Route to delete a user by their DNI.
+ * @name DELETE /users/:dni
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.dni - The DNI of the user to delete.
+ * @see {@link module:controllers/user.controller.deleteUser}
+ */
+router.delete("/:dni", deleteUser);
+
+/**
+ * Route to log in a user.
+ * @name POST /users/login
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.body.email - Email of the user.
+ * @param {string} req.body.password - Password of the user.
+ * @see {@link module:controllers/user.controller.loginUser}
+ */
+router.post("/login", loginUser);
+
+/**
+ * Route to send a password reset token to the user's email.
+ * @name POST /users/recover/forgot-password
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.body.email - Email of the user.
+ * @see {@link module:controllers/user.controller.forgotPassword}
+ */
+router.post("/recover/forgot-password", forgotPassword);
+
+/**
+ * Route to reset the user's password using a token.
+ * @name POST /users/recover/reset-password
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.body.email - Email of the user.
+ * @param {string} req.body.token - Password reset token.
+ * @param {string} req.body.newPassword - New password for the user.
+ * @see {@link module:controllers/user.controller.resetPassword}
+ */
+router.post("/recover/reset-password", resetPassword);
 
 export default router;</code></pre>
         </article>
