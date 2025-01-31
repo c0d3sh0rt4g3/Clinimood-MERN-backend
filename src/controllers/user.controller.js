@@ -5,9 +5,15 @@ import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 
 /**
+ * Controller for handling user-related operations.
+ * @module UserController
+*/
+
+/**
  * Fetches all users from the database.
  * @async
  * @function getAllUsers
+ * @memberOf module:UserController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @returns {Promise<void>} - Returns a JSON response with the list of users or an error message.
@@ -26,6 +32,7 @@ export const getAllUsers = async (req, res) => {
  * Fetches a user by their DNI.
  * @async
  * @function getUserByDni
+ * @memberOf module:UserController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.params.dni - The DNI of the user to fetch.
@@ -49,6 +56,7 @@ export const getUserByDni = async (req, res) => {
  * Fetches all users with a specific role.
  * @async
  * @function getUsersByRole
+ * @memberOf module:UserController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.params.role - The role to filter users by.
@@ -75,6 +83,7 @@ export const getUsersByRole = async (req, res) => {
  * Creates a new user with the provided data.
  * @async
  * @function createUser
+ * @memberOf module:UserController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.body.DNI - DNI of the user.
@@ -111,6 +120,7 @@ export const createUser = async (req, res) => {
  * Updates a user by their DNI.
  * @async
  * @function updateUserByDni
+ * @memberOf module:UserController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.params.dni - The DNI of the user to update.
@@ -139,6 +149,7 @@ export const updateUserByDni = async (req, res) => {
  * Deletes a user by their DNI.
  * @async
  * @function deleteUser
+ * @memberOf module:UserController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.params.dni - The DNI of the user to delete.
@@ -162,6 +173,7 @@ export const deleteUser = async (req, res) => {
  * Logs in a user with the provided email and password.
  * @async
  * @function loginUser
+ * @memberOf module:UserController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.body.email - Email of the user.
@@ -198,6 +210,7 @@ export const loginUser = async (req, res) => {
  * Sends a password reset token to the user's email.
  * @async
  * @function forgotPassword
+ * @memberOf module:UserController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.body.email - Email of the user.
@@ -253,6 +266,7 @@ export const forgotPassword = async (req, res) => {
  * Resets the user's password using the provided token.
  * @async
  * @function resetPassword
+ * @memberOf module:UserController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.body.email - Email of the user.

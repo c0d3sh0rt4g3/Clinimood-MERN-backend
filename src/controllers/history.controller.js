@@ -2,9 +2,15 @@ import History from "../models/history.model.js";
 import Appointment from "../models/appointment.model.js";
 
 /**
+ * Controller for handling history-related operations.
+ * @module HistoryController
+*/
+
+/**
  * Fetches all medical histories from the database.
  * @async
  * @function getAllHistories
+ * @memberof module:HistoryController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @returns {Promise<void>} - Returns a JSON response with the list of medical histories or an error message.
@@ -23,6 +29,7 @@ export const getAllHistories = async (req, res) => {
  * Creates a new medical history for a patient.
  * @async
  * @function createMedicalHistory
+ * @memberof module:HistoryController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.body.patientDNI - The DNI of the patient for whom the medical history is being created.
@@ -64,6 +71,7 @@ export const createMedicalHistory = async (req, res) => {
  * Deletes a medical history for a specified patient.
  * @async
  * @function deleteHistory
+ * @memberof module:HistoryController
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  * @param {string} req.params.patientDNI - The DNI of the patient whose medical history is to be deleted.
