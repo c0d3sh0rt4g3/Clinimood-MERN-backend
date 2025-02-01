@@ -11,9 +11,22 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+// Allowed origins
+const allowedOrigins = [
+    "https://clinimood-mern-frontend.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:5000"
+];
+
 // Configure CORS
 const corsOptions = {
-    origin: "https://clinimood-mern-frontend.vercel.app" || "http://localhost:5173" || "http://localhost:5000",
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 };
