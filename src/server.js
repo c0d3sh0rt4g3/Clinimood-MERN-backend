@@ -5,7 +5,7 @@ import cors from "cors";
 import userRoutes from "./routes/user.route.js";
 import appointmentRoutes from "./routes/appointment.route.js";
 import historyRoutes from "./routes/history.route.js";
-import seedDatabase from "./seedDatabase.js"; // Import the seeding function
+import seedDatabase from "../src/config/seed.js";
 
 dotenv.config();
 

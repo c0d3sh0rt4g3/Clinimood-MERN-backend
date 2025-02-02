@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import User from "./models/User.js";
-import Appointment from "./models/Appointment.js";
-import History from "./models/History.js";
+import User from "../models/user.model.js";
+import Appointment from "../models/appointment.model.js";
+import History from "../models/appointment.model.js";
 import {connectDB} from "./db.js";
 
 dotenv.config();
@@ -99,5 +99,4 @@ const seedDatabase = async () => {
     }
 };
 
-// Run the seeding function
-seedDatabase();
+export default seedDatabase;
