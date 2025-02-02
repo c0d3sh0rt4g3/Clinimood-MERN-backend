@@ -5,6 +5,7 @@ import cors from "cors";
 import userRoutes from "./routes/user.route.js";
 import appointmentRoutes from "./routes/appointment.route.js";
 import historyRoutes from "./routes/history.route.js";
+import seedDatabase from "./seedDatabase.js"; // Import the seeding function
 
 dotenv.config();
 
@@ -36,7 +37,8 @@ app.use('/users', userRoutes);
 app.use('/appointments', appointmentRoutes);
 app.use('/history', historyRoutes);
 
-app.listen(5000, () => {
-    connectDB();
+app.listen(5000, async () => {
+    await connectDB();
+    await seedDatabase();
     console.log('Server started at http://localhost:5000');
 });
