@@ -18,7 +18,9 @@ The project is organized n the following folders:
 ## Installation
 
 ### Clone the repo
-```git clone https://github.com/c0d3sh0rt4g3/Clinimood-MERN-backend.git```
+```bash
+git clone https://github.com/c0d3sh0rt4g3/Clinimood-MERN-backend.git
+```
 
 ### Install dependencies
 ```bash
