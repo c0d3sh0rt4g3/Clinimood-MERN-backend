@@ -19,7 +19,6 @@ const seedDatabase = async () => {
 
         if (userCount > 0 || appointmentCount > 0 || historyCount > 0) {
             console.log("Database already seeded. Skipping...");
-            mongoose.connection.close();
             return;
         }
 
